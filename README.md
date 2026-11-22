@@ -1,36 +1,39 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# LipaPesa Digital Financial Suite (`lipapesa.co.tz`)
 
-## Getting Started
+## 1. Purpose
+Frontend web application for LipaPesa. Connects Mobile Wallets (Vodacom M-Pesa, Mix by Yas, Airtel Money, Halopesa) and VISA Payment Rails for Consumers, Wakala Agents, and Merchants.
 
-First, run the development server:
+## 2. Prerequisites
+- Node.js `18.18+` or `20+`
+- `npm` package manager
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 3. Step-by-Step Procedure
+1. Open a terminal in the project root directory.
+2. Install project dependencies:
+   ```bash
+   npm install
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+    Start the local development server:
+    Bash
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+    npm run dev
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+    Open http://localhost:3000 in your browser.
 
-## Learn More
+4. Repository Map
 
-To learn more about Next.js, take a look at the following resources:
+    AGENT.md — AI agent routing rules and engineering guardrails
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+    ROADMAP.md — Phased delivery milestones and stakeholder sign-off log
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+    ARCHITECTURE_DECISIONS.md — Architectural Decision Records (ADR-001 to ADR-008)
 
-## Deploy on Vercel
+    docs/ — Modular specifications (00-DOCUMENTATION-STANDARD.md through 04-DEVELOPER-PORTAL-SPEC.md)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+    src/app/ — Next.js App Router routes ((marketing), (auth), portal)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+    src/services/ — Payment Rail contracts (contracts/), localStorage simulators (mock/), and production stubs (live/)
+
+5. Verification
+
+    Pass Criteria: The landing page loads at http://localhost:3000 with the interactive Payment Rail simulator, EN/SW (Badili Lugha) toggle, and desktop/mobile quick-services drawer.
