@@ -65,7 +65,6 @@ const rawDictionaries = {
       stat4Label: "Mobile networks plus card rail",
     },
     landing: {
-      eyebrow: "Licensed rails · Dar es Salaam",
       title: "Affordable and accessible",
       titleAccent: "digital payments.",
       sub: "Pay bills, send money, buy airtime and more, all in one place. Businesses take M-Pesa, Mix by Yas, Airtel Money, Halopesa and VISA with one integration.",
@@ -351,7 +350,6 @@ const rawDictionaries = {
       stat4Label: "Pamoja na Huduma ya VISA API",
     },
     landing: {
-      eyebrow: "Mitandao iliyosajiliwa · Dar es Salaam",
       title: "Malipo ya kidijitali",
       titleAccent: "nafuu na rahisi.",
       sub: "Lipa bili, tuma pesa, nunua salio na zaidi, yote mahali pamoja. Biashara hupokea M-Pesa, Mix by Yas, Airtel Money, Halopesa na VISA kwa muunganisho mmoja.",

@@ -30,11 +30,7 @@ export const Hero: React.FC = () => {
       <section className="hero-field text-white overflow-hidden">
         <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 pt-12 sm:pt-20 lg:pt-24 pb-10 sm:pb-16 grid lg:grid-cols-[1.1fr_0.9fr] gap-10 lg:gap-8 items-start">
           <div className="lg:pt-6">
-            <p className="rise inline-flex items-center gap-2 h-7 px-3 rounded-full bg-white/10 border border-white/15 font-mono text-[11px] tracking-[0.06em] uppercase text-white/85">
-              <span className="h-1.5 w-1.5 rounded-full bg-[#34D399] animate-pulse" />
-              {t.eyebrow}
-            </p>
-            <h1 className="rise rise-2 font-heading font-extrabold text-[42px] sm:text-[64px] lg:text-[78px] leading-[0.98] tracking-[-0.035em] mt-6">
+            <h1 className="rise rise-2 font-heading font-extrabold text-[42px] sm:text-[64px] lg:text-[78px] leading-[0.98] tracking-[-0.035em]">
               {t.title}
               <br />
               <span className="text-brand-cyan">{t.titleAccent}</span>
