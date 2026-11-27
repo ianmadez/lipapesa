@@ -3,7 +3,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { useLanguage } from "@/i18n/LanguageContext";
-import { QUICK_SERVICES, MARKETING_NAV_ITEMS, AUTH_NAV_ACTIONS } from "@/config/navigation";
+import { QUICK_SERVICES } from "@/config/navigation";
 import { SERVICE_ICONS, IconBolt, IconArrow } from "@/components/ui/icons";
 
 interface QuickServicesDrawerProps {
@@ -101,17 +101,6 @@ export const QuickServicesDrawer: React.FC<QuickServicesDrawerProps> = ({ isOpen
           })}
         </ul>
 
-        {/* Below xl: primary nav lives here since the centre links are hidden */}
-        <nav aria-label="Primary" className="xl:hidden grid grid-cols-2 gap-px bg-border-subtle border-t border-border-subtle">
-          {[...MARKETING_NAV_ITEMS, AUTH_NAV_ACTIONS.login].map((item) => (
-            <Link key={item.href} href={item.href} onClick={onClose} className="bg-white h-12 grid place-items-center text-[13px] font-medium text-brand-navy hover:text-brand-primary">
-              {en ? item.labelEn : item.labelSw}
-            </Link>
-          ))}
-          <Link href={AUTH_NAV_ACTIONS.signup.href} onClick={onClose} className="sm:hidden col-span-2 h-12 grid place-items-center bg-brand-primary text-white text-[14px] font-medium">
-            {en ? AUTH_NAV_ACTIONS.signup.labelEn : AUTH_NAV_ACTIONS.signup.labelSw}
-          </Link>
-        </nav>
 
         <div className="px-5 py-3 border-t border-border-subtle flex items-center justify-between text-[12px] text-text-muted">
           <span className="font-mono">BOT · PDPA 2022</span>

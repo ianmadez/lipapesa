@@ -58,14 +58,14 @@ export default function ProductsPage() {
 
       {/* Category filter + product grid */}
       <Wrap className="py-16 sm:py-24">
-        <div role="tablist" aria-label={p.kicker} className="flex gap-2 overflow-x-auto no-scrollbar -mx-4 px-4 sm:mx-0 sm:px-0 pb-1">
+        <div role="tablist" aria-label={p.kicker} className="flex flex-wrap gap-2">
           {filters.map(([id, label]) => (
             <button
               key={id}
               role="tab"
               aria-selected={cat === id}
               onClick={() => setCat(id)}
-              className={`shrink-0 h-10 px-4 rounded-lg border text-[14px] font-medium transition-colors cursor-pointer ${
+              className={`h-10 px-3.5 sm:px-4 rounded-lg border text-[14px] font-medium transition-colors cursor-pointer ${
                 cat === id ? "bg-brand-navy border-brand-navy text-white" : "bg-white border-border-subtle text-text-secondary hover:border-brand-primary hover:text-brand-primary"
               }`}
             >

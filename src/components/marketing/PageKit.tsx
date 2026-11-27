@@ -1,10 +1,9 @@
 "use client";
 
 import React from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { useLanguage } from "@/i18n/LanguageContext";
-import { PHOTOS, PhotoKey } from "@/config/images";
+import { photoSource, PhotoKey } from "@/config/images";
 import { IconArrow, IconCheck } from "@/components/ui/icons";
 import { GridField, NodeCluster } from "./graphics/GridAccent";
 
@@ -81,7 +80,11 @@ export const MetricBadge: React.FC<{ label: string; value: string; className?: s
   </div>
 );
 
-/** next/image in a 12px frame with a navy-to-azure overlay. Alt text comes from the dictionary. */
+/**
+ * Responsive photo in a 12px frame with a navy-to-azure overlay.
+ * Plain <img> with srcset over pre-generated WebP variants (see src/config/images.ts).
+ * Lazy by default; `priority` makes it eager with high fetch priority (use for above-the-fold heroes only).
+ */
 export const PhotoFrame: React.FC<{
   photo: PhotoKey;
   className?: string;
@@ -93,10 +96,27 @@ export const PhotoFrame: React.FC<{
   children?: React.ReactNode;
 }> = ({ photo, className = "", aspect = "aspect-[4/3]", priority, sizes = "(min-width: 1024px) 45vw, 100vw", overlay = true, position = "center", children }) => {
   const alts = useLanguage().dict.pages.alts;
+  const img = photoSource(photo);
   return (
     <figure className={`relative ${aspect} ${className}`}>
-      <div className="absolute inset-0 rounded-xl overflow-hidden border border-border-subtle bg-azure-mist">
-        <Image src={PHOTOS[photo]} alt={alts[photo]} fill priority={priority} sizes={sizes} placeholder="blur" className="object-cover" style={{ objectPosition: position }} />
+      <div
+        className="absolute inset-0 rounded-xl overflow-hidden border border-border-subtle bg-azure-mist bg-cover bg-center"
+        style={{ backgroundImage: `url(${img.blur})` }}
+      >
+        {/* eslint-disable-next-line @next/next/no-img-element -- static export: responsive WebP variants are pre-generated */}
+        <img
+          src={img.src}
+          srcSet={img.srcSet}
+          sizes={sizes}
+          width={img.width}
+          height={img.height}
+          alt={alts[photo]}
+          loading={priority ? "eager" : "lazy"}
+          fetchPriority={priority ? "high" : "auto"}
+          decoding="async"
+          className="absolute inset-0 h-full w-full object-cover"
+          style={{ objectPosition: position }}
+        />
         {overlay && <div aria-hidden className="absolute inset-0 bg-gradient-to-tr from-brand-navy/55 via-brand-navy/5 to-brand-primary/10" />}
       </div>
       {children}

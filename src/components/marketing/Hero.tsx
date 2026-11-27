@@ -61,20 +61,18 @@ export const Hero: React.FC = () => {
           <div className="rise rise-2 hidden sm:flex justify-center lg:justify-end">
             <PhoneSimulator />
           </div>
-          <button
-            type="button"
-            onClick={() => setDemo(true)}
-            className="sm:hidden relative h-[300px] -mx-5 overflow-hidden cursor-pointer"
-            aria-label={t.ctaDemo}
-          >
-            <div className="absolute left-1/2 top-0 -translate-x-1/2 scale-[0.82] origin-top pointer-events-none" aria-hidden="true">
+          {/* Preview is decorative and inert; a sibling overlay button opens the demo (no nested buttons). */}
+          <div className="sm:hidden relative h-[300px] -mx-5 overflow-hidden">
+            <div className="absolute left-1/2 top-0 -translate-x-1/2 scale-[0.82] origin-top pointer-events-none" aria-hidden="true" inert>
               <PhoneSimulator />
             </div>
-            <span className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#8FD0F5] via-[#8FD0F5]/80 to-transparent" />
-            <span className="absolute left-1/2 -translate-x-1/2 bottom-6 inline-flex items-center gap-2 h-11 px-5 rounded-full bg-brand-navy text-white text-[14px] font-medium shadow-lg">
-              <IconBolt size={15} className="text-brand-cyan" /> {t.mobileTry}
-            </span>
-          </button>
+            <span aria-hidden className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#8FD0F5] via-[#8FD0F5]/80 to-transparent" />
+            <button type="button" onClick={() => setDemo(true)} aria-label={t.ctaDemo} className="absolute inset-0 cursor-pointer">
+              <span className="absolute left-1/2 -translate-x-1/2 bottom-6 inline-flex items-center gap-2 h-11 px-5 rounded-full bg-brand-navy text-white text-[14px] font-medium shadow-lg whitespace-nowrap">
+                <IconBolt size={15} className="text-brand-cyan" /> {t.mobileTry}
+              </span>
+            </button>
+          </div>
         </div>
 
         {/* Rails: sits in the light-azure part of the fade, so text is dark */}

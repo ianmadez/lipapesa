@@ -6,16 +6,19 @@ import { usePathname } from "next/navigation";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { MARKETING_NAV_ITEMS, AUTH_NAV_ACTIONS } from "@/config/navigation";
 import { QuickServicesDrawer } from "./QuickServicesDrawer";
+import { SiteMenu, MenuGlyph, isActivePath } from "./SiteMenu";
 import { IconArrow, IconGlobe, IconGrid, IconClose } from "@/components/ui/icons";
 import { Logo } from "@/components/ui/Brand";
 
 /** Site header. Owns the Quick Services drawer, which opens anchored under its trigger. */
 export const Navbar: React.FC = () => {
   const { language, toggleLanguage, dict } = useLanguage();
-  const [open, setOpen] = useState(false);
+  const [menu, setMenu] = useState<"services" | "site" | null>(null);
+  const open = menu === "services";
+  const close = () => setMenu(null);
   const en = language === "en";
   const pathname = usePathname() || "/";
-  const isActive = (href: string) => (href === "/" ? pathname === "/" : pathname === href || pathname.startsWith(href + "/"));
+  const isActive = (href: string) => isActivePath(pathname, href);
 
   return (
     <header className="sticky top-0 z-40 w-full bg-white border-b border-border-subtle">
@@ -28,7 +31,7 @@ export const Navbar: React.FC = () => {
           <div className="relative">
             <button
               type="button"
-              onClick={() => setOpen((v) => !v)}
+              onClick={() => setMenu((m) => (m === "services" ? null : "services"))}
               aria-expanded={open}
               aria-controls="quick-services"
               className={`flex items-center gap-2 h-9 px-3 rounded-lg border text-[13px] font-medium transition-colors cursor-pointer ${
@@ -40,7 +43,7 @@ export const Navbar: React.FC = () => {
               {open ? <IconClose size={16} /> : <IconGrid size={16} />}
               <span className="hidden md:inline">{dict.nav.quickServices}</span>
             </button>
-            <QuickServicesDrawer isOpen={open} onClose={() => setOpen(false)} />
+            <QuickServicesDrawer isOpen={open} onClose={close} />
           </div>
         </div>
 
@@ -82,6 +85,21 @@ export const Navbar: React.FC = () => {
             {en ? AUTH_NAV_ACTIONS.signup.labelEn : AUTH_NAV_ACTIONS.signup.labelSw}
             <IconArrow size={14} />
           </Link>
+          <div className="relative xl:hidden">
+            <button
+              type="button"
+              onClick={() => setMenu((m) => (m === "site" ? null : "site"))}
+              aria-expanded={menu === "site"}
+              aria-controls="site-menu"
+              aria-label={en ? "Menu" : "Menyu"}
+              className={`grid place-items-center h-9 w-9 rounded-lg border transition-colors cursor-pointer ${
+                menu === "site" ? "border-brand-navy bg-brand-navy text-white" : "border-border-subtle text-brand-navy hover:border-brand-primary"
+              }`}
+            >
+              <MenuGlyph open={menu === "site"} />
+            </button>
+            <SiteMenu isOpen={menu === "site"} onClose={close} pathname={pathname} />
+          </div>
         </div>
       </div>
     </header>

@@ -1,24 +1,34 @@
 /**
- * Local royalty-free photography (Unsplash License). Files live in `public/images/`.
- * Static imports keep the GitHub Pages base path correct (ADR-012) and give next/image intrinsic sizes.
- * Credits: public/images/CREDITS.md. Alt text: `dict.pages.alts[altKey]`.
+ * Local royalty-free photography (Unsplash License). Credits: public/images/CREDITS.md.
+ *
+ * The site is a static export, so Next's image optimizer is off (`images.unoptimized`).
+ * We pre-generate WebP variants instead (480/800/1200/1600 px) in public/images/opt/
+ * and serve them with srcset, so a phone downloads ~20 KB instead of a 240 KB JPEG.
+ * Alt text: `dict.pages.alts[key]`.
  */
-import heroMerchant from "../../public/images/hero-merchant.jpg";
-import wakalaAgent from "../../public/images/wakala-agent.jpg";
-import eduPay from "../../public/images/edupay-parent-student.jpg";
-import companyTeam from "../../public/images/company-team.jpg";
-import ecommerce from "../../public/images/ecommerce-founder.jpg";
-import enterprise from "../../public/images/enterprise-ops.jpg";
-import streetVendor from "../../public/images/street-vendor.jpg";
+import { BASE_PATH } from "./site";
+import { PHOTO_MANIFEST } from "./photoManifest";
 
-export const PHOTOS = {
-  heroMerchant,
-  wakalaAgent,
-  eduPay,
-  companyTeam,
-  ecommerce,
-  enterprise,
-  streetVendor,
-} as const;
+export type PhotoKey = keyof typeof PHOTO_MANIFEST;
 
-export type PhotoKey = keyof typeof PHOTOS;
+export interface PhotoSource {
+  src: string;
+  srcSet: string;
+  width: number;
+  height: number;
+  blur: string;
+}
+
+const url = (file: string, w: number) => `${BASE_PATH}/images/opt/${file}-${w}.webp`;
+
+export const photoSource = (key: PhotoKey): PhotoSource => {
+  const p = PHOTO_MANIFEST[key];
+  const ws = p.widths as readonly number[];
+  return {
+    src: url(p.file, ws[Math.min(1, ws.length - 1)]),
+    srcSet: ws.map((w) => `${url(p.file, w)} ${w}w`).join(", "),
+    width: p.width,
+    height: p.height,
+    blur: p.blur,
+  };
+};

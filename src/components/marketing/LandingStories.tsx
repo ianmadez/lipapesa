@@ -13,10 +13,10 @@ export const LandingStories: React.FC = () => {
   const t = dict.pages.landingStories;
   const s = dict.pages.shared;
 
-  const tiles: { photo: PhotoKey; label: string; href: string; cls: string; aspect: string; badge?: [string, string] }[] = [
-    { photo: "heroMerchant", label: t.merchant, href: "/clients#ecom", cls: "md:col-span-2 md:row-span-2", aspect: "aspect-[4/3] md:aspect-auto md:h-full", badge: [t.badgePaid, s.samplePaid] },
-    { photo: "eduPay", label: t.students, href: "/clients#schools", cls: "", aspect: "aspect-[4/3]", badge: [t.badgeFee, s.sampleFee] },
-    { photo: "wakalaAgent", label: t.agents, href: "/clients#agents", cls: "", aspect: "aspect-[4/3]" },
+  const tiles: { photo: PhotoKey; label: string; href: string; cls: string; aspect: string; sizes: string; badge?: [string, string] }[] = [
+    { photo: "heroMerchant", label: t.merchant, href: "/clients#ecom", cls: "md:col-span-2 md:row-span-2", aspect: "aspect-[4/3] md:aspect-auto md:h-full", sizes: "(min-width: 768px) 66vw, 100vw", badge: [t.badgePaid, s.samplePaid] },
+    { photo: "eduPay", label: t.students, href: "/clients#schools", cls: "", aspect: "aspect-[4/3]", sizes: "(min-width: 768px) 33vw, 100vw", badge: [t.badgeFee, s.sampleFee] },
+    { photo: "wakalaAgent", label: t.agents, href: "/clients#agents", cls: "", aspect: "aspect-[4/3]", sizes: "(min-width: 768px) 33vw, 100vw" },
   ];
 
   return (
@@ -29,9 +29,9 @@ export const LandingStories: React.FC = () => {
       </div>
 
       <div className="mt-10 grid md:grid-cols-3 md:grid-rows-2 gap-4 md:h-[560px]">
-        {tiles.map(({ photo, label, href, cls, aspect, badge }) => (
+        {tiles.map(({ photo, label, href, cls, aspect, sizes, badge }) => (
           <Link key={photo} href={href} className={`group relative block rounded-xl transition-[transform,box-shadow] duration-300 ease-out hover:-translate-y-1.5 hover:shadow-[0_20px_48px_-12px_rgba(6,21,38,0.28)] focus-visible:-translate-y-1.5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-primary motion-reduce:transform-none ${cls}`}>
-            <PhotoFrame photo={photo} aspect={aspect} className="h-full" sizes="(min-width: 768px) 33vw, 100vw">
+            <PhotoFrame photo={photo} aspect={aspect} className="h-full" sizes={sizes}>
               <figcaption className="absolute left-4 bottom-4 right-4 flex items-end justify-between gap-3 text-white">
                 <span className="font-heading font-bold text-[18px]">{label}</span>
                 <IconArrow size={18} className="transition-transform group-hover:translate-x-1" />
