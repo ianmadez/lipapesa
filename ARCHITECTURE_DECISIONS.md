@@ -99,3 +99,36 @@ Record every significant technical, structural, or visual decision here so human
   6. Auth pages are locked to `h-dvh`. Only the form sheet can scroll, for when the mobile keyboard is open.
   7. Brand mark (`LogoMark`, `src/app/icon.svg`) is the curled-note glyph from the wordmark, redrawn as SVG. `public/og.png` is a frozen 1200×630 OG image.
 - **Why:** GitHub Pages serves only static files. The original tagline matches the consumer offer. A fake phone frame inside a real phone wastes space.
+
+## ADR-013: Corporate & Product Pages, Bespoke SVG Graphics, Local Photography
+
+- **Status:** Accepted
+- **Note:** The request named this record ADR-009. ADR-009 to ADR-012 already exist, so this record uses the next free number.
+
+### 1. Purpose
+
+Add the four pages that LIPATECH leadership requested in the top navigation. Show real African customers and the LipaPesa Payment Rail architecture.
+
+### 2. Prerequisites & Inputs
+
+- `src/config/navigation.ts` (`MARKETING_NAV_ITEMS`)
+- `src/i18n/marketingPages.ts` (EN + SW copy, merged into `dictionaries.ts` under `pages`)
+- `src/config/images.ts` (static imports of `public/images/*.jpg`)
+- `mockMerchantService.calculateMdr` and `BRAND_METRICS.demoMonthlyGrossTzs`
+
+### 3. Decision
+
+1. Replace the nav items with `Our Products`, `Our Services`, `Our Company`, `Our Clients`, `Developers`.
+2. Show the centre links from the `xl` breakpoint. Below `xl`, the `QuickServicesDrawer` holds the primary nav.
+3. Add routes `/products`, `/services`, `/company`, `/clients`. Each `page.tsx` exports `metadata` and renders a client component from `src/components/marketing/pages/`.
+4. Keep `/about` as an alias. The static export cannot send HTTP 301, so `AboutRedirect` calls `router.replace("/company")`. The page is `noindex`.
+5. Put shared layout parts in `src/components/marketing/PageKit.tsx` (`PageHero`, `SectionHead`, `PhotoFrame`, `MetricBadge`, `CtaBand`).
+6. Draw graphics as inline SVG in `src/components/marketing/graphics/`: `RailSwitchingDiagram`, `SettlementFlowGraphic`, `GridField`, `NodeCluster`. Read rail names and colours from `BRAND_INFO.supportedRails`. Stop all motion when `prefers-reduced-motion` is set.
+7. Store photos locally in `public/images/`. Import them statically so the GitHub Pages base path applies (ADR-012). Use only Unsplash License photos and record each one in `public/images/CREDITS.md`.
+8. Read `?role=` on `/signup` to preselect `CONSUMER`, `WAKALA` or `MERCHANT`.
+9. Keep `Schibsted Grotesk` + `Geist` + `Geist Mono` (ADR-011). Do not reintroduce Bricolage / Instrument Sans / IBM Plex Mono.
+
+### 4. Verification & Expected Output
+
+- **Pass Criteria:** `npm run build` exports `/products/`, `/services/`, `/company/`, `/clients/` and `/about/` as static pages. The `EN` / `SW` toggle changes every heading, card, graphic label and image alt text.
+- **Failure Mode:** If a key is missing in `marketingPagesSw`, TypeScript fails the build because the SW object has the type `typeof marketingPagesEn`.

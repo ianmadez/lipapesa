@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { MARKETING_NAV_ITEMS, AUTH_NAV_ACTIONS } from "@/config/navigation";
 import { QuickServicesDrawer } from "./QuickServicesDrawer";
@@ -13,10 +14,12 @@ export const Navbar: React.FC = () => {
   const { language, toggleLanguage, dict } = useLanguage();
   const [open, setOpen] = useState(false);
   const en = language === "en";
+  const pathname = usePathname() || "/";
+  const isActive = (href: string) => (href === "/" ? pathname === "/" : pathname === href || pathname.startsWith(href + "/"));
 
   return (
     <header className="sticky top-0 z-40 w-full bg-white border-b border-border-subtle">
-      <div className="w-full px-4 sm:px-6 lg:px-10 h-16 grid grid-cols-[1fr_auto] lg:grid-cols-[1fr_auto_1fr] items-center gap-4">
+      <div className="w-full px-4 sm:px-6 lg:px-10 h-16 grid grid-cols-[1fr_auto] xl:grid-cols-[1fr_auto_1fr] items-center gap-4">
         <div className="flex items-center gap-3 sm:gap-4 justify-self-start">
           <Link href="/" aria-label="LipaPesa home" className="shrink-0">
             <Logo priority className="h-7 sm:h-8 w-auto" />
@@ -41,9 +44,16 @@ export const Navbar: React.FC = () => {
           </div>
         </div>
 
-        <nav aria-label="Primary" className="hidden lg:flex items-center gap-8 text-[14px] font-medium text-text-secondary">
+        <nav aria-label="Primary" className="hidden xl:flex items-center gap-6 text-[14px] font-medium text-text-secondary">
           {MARKETING_NAV_ITEMS.map((item) => (
-            <Link key={item.id} href={item.href} className="hover:text-brand-primary transition-colors py-1">
+            <Link
+              key={item.id}
+              href={item.href}
+              aria-current={isActive(item.href) ? "page" : undefined}
+              className={`relative py-1 transition-colors hover:text-brand-primary ${
+                isActive(item.href) ? "text-brand-navy after:absolute after:left-0 after:right-0 after:-bottom-[21px] after:h-0.5 after:bg-brand-primary" : ""
+              }`}
+            >
               {en ? item.labelEn : item.labelSw}
             </Link>
           ))}

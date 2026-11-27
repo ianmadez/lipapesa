@@ -24,26 +24,14 @@ export interface QuickServiceItem {
   popular?: boolean;
 }
 
+/** Top-level marketing nav (ADR-013). `/about` redirects to `/company`. */
 export const MARKETING_NAV_ITEMS: NavItem[] = [
-  {
-    id: "solutions",
-    labelEn: "Solutions",
-    labelSw: "Suluhisho",
-    href: "/#solutions",
-  },
-  {
-    id: "about",
-    labelEn: "About Us",
-    labelSw: "Kuhusu Sisi",
-    href: "/about",
-  },
-  {
-    id: "developers",
-    labelEn: "Developers",
-    labelSw: "Wasanidi Programu",
-    href: "/developers",
-    badge: "v1.0 API",
-  },
+  { id: "home", labelEn: "Home", labelSw: "Nyumbani", href: "/" },
+  { id: "products", labelEn: "Our Products", labelSw: "Bidhaa Zetu", href: "/products" },
+  { id: "services", labelEn: "Our Services", labelSw: "Huduma Zetu", href: "/services" },
+  { id: "company", labelEn: "Our Company", labelSw: "Kampuni Yetu", href: "/company" },
+  { id: "clients", labelEn: "Our Clients", labelSw: "Wateja Wetu", href: "/clients" },
+  { id: "developers", labelEn: "Developers", labelSw: "Wasanidi Programu", href: "/developers" },
 ];
 
 export const AUTH_NAV_ACTIONS = {
@@ -55,8 +43,8 @@ export const AUTH_NAV_ACTIONS = {
   },
   signup: {
     id: "signup",
-    labelEn: "Create Account",
-    labelSw: "Fungua Akaunti",
+    labelEn: "Sign Up",
+    labelSw: "Jisajili",
     href: "/signup",
   },
 } as const;
@@ -169,7 +157,7 @@ export const PORTAL_NAV_ITEMS: NavItem[] = [
   {
     id: "pay",
     labelEn: "Consumer Services",
-    labelSw: "Huduma za Mlaji",
+    labelSw: "Huduma za Mteja",
     href: "/portal/pay",
     iconName: "CreditCard",
   },
@@ -195,7 +183,7 @@ export const DEMO_ROLE_PRESETS = [
   {
     role: "CONSUMER" as const,
     labelEn: "Consumer (Personal)",
-    labelSw: "Mlaji (Binafsi)",
+    labelSw: "Mteja (Binafsi)",
     phone: "+255 754 112 233",
     name: "Baraka Juma",
   },

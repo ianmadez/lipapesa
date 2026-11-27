@@ -194,6 +194,12 @@ export const SignupForm: React.FC = () => {
   const router = useRouter();
   const [role, setRole] = useState<UserRole>("CONSUMER");
   const [vertical, setVertical] = useState<MerchantVertical>("ECOMMERCE");
+  // Preselect the role from `/signup?role=...` links on the marketing pages (ADR-013).
+  useEffect(() => {
+    const r = new URLSearchParams(window.location.search).get("role");
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- URL is only readable after hydration on a static export
+    if (r === "CONSUMER" || r === "WAKALA" || r === "MERCHANT") setRole(r);
+  }, []);
   const [form, setForm] = useState({ fullName: "", phone: "", pin: "", businessName: "", tinNumber: "" });
   const [busy, setBusy] = useState(false);
   const set = (k: keyof typeof form) => (v: string) => setForm((f) => ({ ...f, [k]: v }));

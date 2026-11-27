@@ -145,6 +145,12 @@ export const Faq: React.FC = () => {
     [t.faq2Q, t.faq2A],
     [t.faq3Q, t.faq3A],
     [t.faq4Q, t.faq4A],
+    [t.faq5Q, t.faq5A],
+    [t.faq6Q, t.faq6A],
+    [t.faq7Q, t.faq7A],
+    [t.faq8Q, t.faq8A],
+    [t.faq9Q, t.faq9A],
+    [t.faq10Q, t.faq10A],
   ];
   return (
     <Wrap className="pb-20 sm:pb-28 grid lg:grid-cols-[0.8fr_1.2fr] gap-10">

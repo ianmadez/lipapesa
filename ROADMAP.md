@@ -30,6 +30,18 @@ Transform `www.lipapesa.co.tz` from a static brochure site into a high-trust Tan
 - [x] Upgraded `/about` page (Dar es Salaam HQ, Vodacom enterprise partnership & East African network switching vision, PDPA 2022 & 2FA security posture)
 - *Spec refs:* [`docs/01-DESIGN-SYSTEM.md`](./docs/01-DESIGN-SYSTEM.md), [`docs/02-PRODUCT-REQUIREMENTS.md`](./docs/02-PRODUCT-REQUIREMENTS.md)
 
+### Phase 1.5: Corporate & Product Pages, Graphics, Photography (Complete)
+
+- [x] Navbar: `Our Products`, `Our Services`, `Our Company`, `Our Clients`, `Developers`. Keep `Badili Lugha`, `Log In` / `Sign Up`, and the burger `QuickServicesDrawer`.
+- [x] `/products`: category filter, 5 product cards, `RailSwitchingDiagram`, `SettlementFlowGraphic` (MDR from `mockMerchantService`).
+- [x] `/services`: 4 service lines, 4-step onboarding flow, tier comparison table (tier tabs on mobile).
+- [x] `/company`: story, vision, Dar es Salaam footprint map, security governance. `/about` redirects to `/company`.
+- [x] `/clients`: 4 verticals with case stories and metrics. CTAs go to `/signup?role=...`.
+- [x] Landing: `LandingStories` photo mosaic links to `/clients`.
+- [x] 7 Unsplash-License photos in `public/images/` (credits in `public/images/CREDITS.md`). EN/SW alt text.
+- [x] All new copy in `src/i18n/marketingPages.ts` (EN + SW), merged into `dictionaries.ts` as `pages`.
+- *Spec refs:* [`ARCHITECTURE_DECISIONS.md`](./ARCHITECTURE_DECISIONS.md) (ADR-013)
+
 ### Phase 2: Role-Based Sign Up (`/signup`, `/login`) & Authenticated Portal (`/portal`)
 
 - [ ] `/signup` & `/login`: Role-aware onboarding (**Consumer**, **LipaPesa Wakala / Chap Chap Agent**, **E-Commerce & School Merchant**) with simulated 2FA/eKYC & Till provisioning that routes directly into `/portal`

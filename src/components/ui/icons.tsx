@@ -36,7 +36,8 @@ export const IconWithdraw = make(<><path d="M12 4v11M7 10l5 5 5-5" /><path d="M5
 export const IconReceipt = make(<><path d="M6 3h12v18l-3-2-3 2-3-2-3 2z" /><path d="M9 8h6M9 12h6" /></>);
 export const IconPhone = make(<><rect x="7" y="3" width="10" height="18" rx="2" /><path d="M11 17h2" /></>);
 export const IconTicket = make(<><path d="M3 8a2 2 0 002-2h14a2 2 0 002 2v2a2 2 0 000 4v2a2 2 0 00-2 2H5a2 2 0 00-2-2v-2a2 2 0 000-4z" /><path d="M14 6v12" strokeDasharray="2 2" /></>);
-export const IconSignal = make(<><path d="M5 18a10 10 0 0114 0" /><path d="M8 15a6 6 0 018 0" /><circle cx="12" cy="19" r="1" /></>);
+export const IconSignal = make(<><path d="M2.5 9a14 14 0 0119 0" /><path d="M5.5 12.5a9.5 9.5 0 0113 0" /><path d="M8.75 16a5 5 0 016.5 0" /><circle cx="12" cy="19.25" r="1.1" fill="currentColor" stroke="none" /></>);
+export const IconWifi = IconSignal;
 export const IconShield = make(<><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z" /><path d="M9 12l2 2 4-4" /></>);
 export const IconLock = make(<><rect x="5" y="10" width="14" height="10" /><path d="M8 10V7a4 4 0 018 0v3" /></>);
 export const IconCode = make(<path d="M9 7l-5 5 5 5M15 7l5 5-5 5" />);
@@ -53,5 +54,5 @@ export const SERVICE_ICONS: Record<string, React.FC<IconProps>> = {
   Receipt: IconReceipt,
   Smartphone: IconPhone,
   Ticket: IconTicket,
-  Wifi: IconSignal,
+  Wifi: IconWifi,
 };

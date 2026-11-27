@@ -4,6 +4,8 @@
  * Enforces "Badili Lugha" parity across all navigation, CTAs, simulator states, and portal views.
  */
 
+import { marketingPagesEn, marketingPagesSw } from "./marketingPages";
+
 export type Language = "en" | "sw";
 
 const rawDictionaries = {
@@ -37,6 +39,10 @@ const rawDictionaries = {
     },
     nav: {
       solutions: "Solutions",
+      products: "Our Products",
+      services: "Our Services",
+      company: "Our Company",
+      clients: "Our Clients",
       about: "About Us",
       developers: "Developers",
       login: "Log In",
@@ -105,6 +111,18 @@ const rawDictionaries = {
       faq3A: "Yes. Edu-Pay tills match each payment to a student ID automatically.",
       faq4Q: "How do I become a Wakala?",
       faq4A: "Sign up as a Wakala, top up float, and start selling airtime and vouchers the same day.",
+      faq5Q: "Which networks and cards do you support?",
+      faq5A: "Vodacom M-Pesa, Mix by Yas, Airtel Money, Halopesa and VISA. A customer pays from any of them to the same Till.",
+      faq6Q: "When do merchants get paid?",
+      faq6A: "Collections settle monthly. You get a statement that shows gross collections, the MDR and the net amount paid.",
+      faq7Q: "What do I need to open a business account?",
+      faq7A: "Your business registration certificate, TIN, the ID of the contact person and your bank details. We verify them before we issue your Till.",
+      faq8Q: "Can I pay bills and buy airtime?",
+      faq8A: "Yes. Buy airtime for every network, pay LUKU, water and TV bills, and renew fiber, Wi-Fi and MiFi from one account.",
+      faq9Q: "How do you keep payments safe?",
+      faq9A: "Two-factor login, KYC and AML checks, and Maker-Checker approval, so two people approve every large payout.",
+      faq10Q: "Can developers connect their own system?",
+      faq10A: "Yes. Use the REST API and signed webhooks. Build in the sandbox first, then switch to live Payment Rails.",
       ctaHeading: "Start taking payments this week.",
       ctaButton: "Create a free account",
       footerTagline: "Payments infrastructure for Tanzania.",
@@ -291,6 +309,7 @@ const rawDictionaries = {
       tabsWebhook: "Webhook Event",
       responseStatus: "HTTP 200 OK — Realistic Rail Simulation",
     },
+    pages: marketingPagesEn,
   },
   sw: {
     common: {
@@ -321,6 +340,10 @@ const rawDictionaries = {
       demoRole: "Badili Wasifu wa Majaribio",
     },
     nav: {
+      products: "Bidhaa Zetu",
+      services: "Huduma Zetu",
+      company: "Kampuni Yetu",
+      clients: "Wateja Wetu",
       solutions: "Suluhisho",
       about: "Kuhusu Sisi",
       developers: "Wasanidi Programu",
@@ -383,13 +406,25 @@ const rawDictionaries = {
       devCta: "Tazama hakikisho la wasanidi",
       faqHeading: "Maswali",
       faq1Q: "Gharama ni kiasi gani?",
-      faq1A: "Wafanyabiashara hulipa MDR ya 5–6%, hukatwa mwisho wa mwezi. Walaji hawalipi ziada.",
+      faq1A: "Wafanyabiashara hulipa MDR ya 5–6%, hukatwa mwisho wa mwezi. Wateja hawalipi ziada.",
       faq2Q: "Data yangu inahifadhiwa Tanzania?",
       faq2A: "Ndiyo. Tunafuata Sheria ya Ulinzi wa Taarifa Binafsi 2022 na kanuni za Benki Kuu.",
       faq3Q: "Shule inaweza kutumia LipaPesa?",
       faq3A: "Ndiyo. Till za Edu-Pay zinalinganisha kila malipo na namba ya mwanafunzi.",
       faq4Q: "Nawezaje kuwa Wakala?",
       faq4A: "Jisajili kama Wakala, ongeza float, na anza kuuza salio na vocha siku hiyo hiyo.",
+      faq5Q: "Mnatumia mitandao na kadi gani?",
+      faq5A: "Vodacom M-Pesa, Mix by Yas, Airtel Money, Halopesa na VISA. Mteja analipa kutoka yoyote kwenda Till moja.",
+      faq6Q: "Wafanyabiashara hulipwa lini?",
+      faq6A: "Makusanyo hulipwa kila mwezi. Unapata taarifa inayoonyesha jumla ya makusanyo, MDR na kiasi halisi ulicholipwa.",
+      faq7Q: "Nahitaji nini kufungua akaunti ya biashara?",
+      faq7A: "Cheti cha usajili wa biashara, TIN, kitambulisho cha mtu wa mawasiliano na taarifa za benki. Tunazithibitisha kabla ya kukupa Till.",
+      faq8Q: "Naweza kulipia bili na kununua salio?",
+      faq8A: "Ndiyo. Nunua salio kwa kila mtandao, lipia LUKU, maji na TV, na lipia fiber, Wi-Fi na MiFi kutoka akaunti moja.",
+      faq9Q: "Mnalindaje malipo?",
+      faq9A: "Kuingia kwa hatua mbili, ukaguzi wa KYC na AML, na idhini ya Maker-Checker, hivyo watu wawili wanaidhinisha kila malipo makubwa.",
+      faq10Q: "Wasanidi programu wanaweza kuunganisha mfumo wao?",
+      faq10A: "Ndiyo. Tumia REST API na webhook zilizosainiwa. Jenga kwenye mazingira ya majaribio kwanza, kisha hamia Njia za Malipo halisi.",
       ctaHeading: "Anza kupokea malipo wiki hii.",
       ctaButton: "Fungua akaunti bure",
       footerTagline: "Miundombinu ya malipo kwa Tanzania.",
@@ -472,11 +507,11 @@ const rawDictionaries = {
     },
     pillars: {
       heading: "Masuluhisho Matatu Mahususi, Msingi Mmoja Imara",
-      subheading: "Dashibodi maalum kwa Walaji, Mawakala wa Wakala, na Wafanyabiashara.",
-      consumerTitle: "Huduma za Kidijitali za Mlaji",
+      subheading: "Dashibodi maalum kwa Wateja, Mawakala wa Wakala, na Wafanyabiashara.",
+      consumerTitle: "Huduma za Kidijitali za Mteja",
       consumerDesc:
         "Kununua salio papo hapo, vocha za kidijitali zenye usalama, intaneti ya fiber, na bili za umeme (LUKU).",
-      consumerCta: "Fungua Huduma za Mlaji",
+      consumerCta: "Fungua Huduma za Mteja",
       wakalaTitle: "LipaPesa Wakala / Chap Chap",
       wakalaDesc:
         "Ununuzi wa salio la jumla (float), uchapishaji wa vocha kwa mafungu, na kamisheni za uwakala za papo hapo.",
@@ -490,9 +525,9 @@ const rawDictionaries = {
       loginTitle: "Ingia kwenye Dashibodi ya LipaPesa",
       loginSubtitle: "Ingia kwa namba yako ya simu na PIN salama",
       signupTitle: "Fungua Akaunti Mpya",
-      signupSubtitle: "Jiunge na walaji, mawakala wa Chap Chap, na wafanyabiashara kote Tanzania",
+      signupSubtitle: "Jiunge na wateja, mawakala wa Chap Chap, na wafanyabiashara kote Tanzania",
       selectRoleLabel: "Chagua Aina ya Akaunti Yako",
-      consumerRole: "Mlaji (Binafsi)",
+      consumerRole: "Mteja (Binafsi)",
       consumerRoleDesc: "Lipa bili, nunua vocha, salio, na dhibiti malipo yako ya kibinafsi.",
       wakalaRole: "LipaPesa Wakala / Chap Chap",
       wakalaRoleDesc: "Ongeza float, uza vocha kwa mafungu, na pata kamisheni.",
@@ -576,6 +611,7 @@ const rawDictionaries = {
       tabsWebhook: "Tukio la Webhook",
       responseStatus: "HTTP 200 OK — Majaribio Halisi ya Mtandao",
     },
+    pages: marketingPagesSw,
   },
 };
 

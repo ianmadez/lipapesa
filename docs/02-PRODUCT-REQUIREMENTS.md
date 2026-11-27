@@ -4,11 +4,11 @@ Derived from stakeholder specifications (Haji, Moses, Juliana) and existing `lip
 
 ## 1. End-to-End User Funnel
 
-### Stage 1: Public Landing & Navigation (`/`, `/about`, `/developers`)
+### Stage 1: Public Landing & Navigation (`/`, `/products`, `/services`, `/company`, `/clients`, `/developers`)
 
 - **Header Controls:**
   - LipaPesa wordmark/logo
-  - Primary nav: `Solutions`, `About Us`, `Developers`
+  - Primary nav (ADR-013): `Our Products`, `Our Services`, `Our Company`, `Our Clients`, `Developers`. `/about` redirects to `/company`.
   - `Badili Lugha` (`EN` / `SW` language toggle)
   - Auth CTAs: `Log In` (`/login`) & `Create Account` (`/signup`)
   - **Burger Menu Trigger (Visible on BOTH Desktop & Mobile):** Opens `QuickServicesDrawer`â€”a sleek slide-over panel housing all legacy LipaPesa quick-action tiles (`Transaction Bundles`, `Pay Merchant`, `Scan to Pay`, `Send Money`, `Withdraw Money`, `Pay Bills`, `Airtime`, `Virtual Vouchers`, `Fiber / Wi-Fi / MiFi`) that deep-link straight into `/portal/pay?service=...`.

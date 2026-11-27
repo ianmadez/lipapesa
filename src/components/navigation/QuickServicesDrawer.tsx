@@ -101,8 +101,8 @@ export const QuickServicesDrawer: React.FC<QuickServicesDrawerProps> = ({ isOpen
           })}
         </ul>
 
-        {/* Mobile only: primary nav lives here since the centre links are hidden */}
-        <nav aria-label="Primary" className="lg:hidden grid grid-cols-2 gap-px bg-border-subtle border-t border-border-subtle">
+        {/* Below xl: primary nav lives here since the centre links are hidden */}
+        <nav aria-label="Primary" className="xl:hidden grid grid-cols-2 gap-px bg-border-subtle border-t border-border-subtle">
           {[...MARKETING_NAV_ITEMS, AUTH_NAV_ACTIONS.login].map((item) => (
             <Link key={item.href} href={item.href} onClick={onClose} className="bg-white h-12 grid place-items-center text-[13px] font-medium text-brand-navy hover:text-brand-primary">
               {en ? item.labelEn : item.labelSw}

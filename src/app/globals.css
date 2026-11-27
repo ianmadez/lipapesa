@@ -213,3 +213,12 @@ html { scroll-behavior: smooth; }
   .lg-plain { background: none; }
   .lg-plain::after { display: none; }
 }
+
+/* ADR-013: graphics motion */
+@keyframes rsd-dash { to { stroke-dashoffset: -18; } }
+@keyframes rsd-blink { 0%, 100% { opacity: 0.9; } 50% { opacity: 0.2; } }
+.rsd-flow { animation: rsd-dash 1.1s linear infinite; }
+.rsd-blink { animation: rsd-blink 2.4s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) {
+  .rsd-flow, .rsd-blink { animation: none; }
+}

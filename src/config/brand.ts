@@ -36,6 +36,8 @@ export const BRAND_METRICS = {
   currency: "TZS",
   currencySymbol: "TSh",
   countryCode: "+255",
+  /** Demo month of Till collections shown in SettlementFlowGraphic. */
+  demoMonthlyGrossTzs: 12_400_000,
 } as const;
 
 export const BRAND_INFO = {

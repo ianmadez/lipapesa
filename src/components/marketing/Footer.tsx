@@ -27,7 +27,7 @@ export const Footer: React.FC = () => {
     {
       title: t.footerProducts,
       links: [
-        [en ? "Consumer Pay" : "Malipo ya Mlaji", "/portal/pay"],
+        [en ? "Consumer Pay" : "Malipo ya Mteja", "/portal/pay"],
         ["Wakala Chap Chap", "/portal/wakala"],
         [en ? "Merchant Tills" : "Till za Biashara", "/portal/merchant"],
         ["Edu-Pay", "/portal/merchant?vertical=school"],
@@ -45,7 +45,10 @@ export const Footer: React.FC = () => {
     {
       title: t.footerCompany,
       links: [
-        [dict.nav.about, "/about"],
+        [dict.nav.company, "/company"],
+        [dict.nav.products, "/products"],
+        [dict.nav.services, "/services"],
+        [dict.nav.clients, "/clients"],
         [dict.nav.login, "/login"],
         [dict.nav.signup, "/signup"],
       ],
